@@ -6,7 +6,7 @@ One shared Quota Beast. Tap the Reset Card to add a hit. Players can hurt it; on
 
 ## Architecture
 
-A single framework-free HTML document contains CSS, JavaScript and the animated SVG quota-meter monster. Cloudflare Static Assets serves it. Worker APIs call `ResetRaidDO("global")`, a SQLite-backed Durable Object. The authoritative current round, participant hashes, processed batches and historical rounds stay inside its storage. There is no D1, VPS, external font, image dependency, analytics, login or sound.
+A single framework-free HTML document contains CSS, JavaScript and the animated SVG quota-meter monster. Cloudflare Static Assets serves it. Worker APIs call `ResetRaidDO("global")`, a SQLite-backed Durable Object. The authoritative current round, participant hashes, processed batches and historical rounds stay inside its storage. There is no D1, VPS, external font, third-party image service, analytics, login or sound.
 
 `GET /api/state` uses a two-second edge cache. Visible browsers poll every ten seconds. Click feedback is immediate. Network submission batches every second or at twenty hits, with at most fifty hits per request. Each batch keeps its UUID across retries. Pending hits are bounded at 500 and live only in memory. Page hiding attempts a keepalive flush. Unacknowledged hits can be lost if a page closes while another request is in flight.
 
@@ -26,6 +26,12 @@ npm run dev
 ```
 
 The first state request, and the Cron, attempt to initialize from the newest verified event. With an unavailable/stale feed and no stored round, state returns 503; the rendered page remains available. No demo counts or fabricated timestamp are used.
+
+## Invite friends
+
+The invitation button opens a keyboard-accessible poster preview. The browser generates a 1080 × 1440 PNG using the existing SVG beast and the latest confirmed round counts (pending hits are excluded). The QR code opens `https://reset.wowtools.ai/`; the poster is a timestamped snapshot, not a live scoreboard. Save the PNG, long-press it on mobile, copy the invitation link, or use native file sharing on supported devices. No poster upload, extra API write, referral identifier or paid image service is used.
+
+`public/share.js` handles the canvas export and share/download fallback. `public/invite-qr.svg` is a pre-generated level-Q QR with a four-module quiet zone, produced with [qrcode-generator 2.0.4](https://github.com/kazuhikoarase/qrcode-generator) (MIT, Copyright © 2009 Kazuhiko Arase). To regenerate after changing the public URL: call `qrcode(0, "Q")`, `addData(url)`, `make()`, then `createSvgTag(8, 32)`. The generator is not loaded at runtime.
 
 ## Cloudflare deployment
 

@@ -7,7 +7,7 @@
   },
   "typecheck": "passed",
   "wrangler_deploy_dry_run": "passed",
-  "page_gzip_bytes": 6881,
+  "page_gzip_bytes": 7862,
   "viewports": [
     "320x568",
     "375x667",
@@ -96,7 +96,7 @@
     "lastResetAt": "2026-10-07T03:35:09.000Z",
     "sourceUrl": "https://x.com/thsottiaux/status/2107676072871600470",
     "hpDecayK": 5000,
-    "updatedAt": "2026-10-08T00:38:11.494Z"
+    "updatedAt": "2026-10-08T00:54:41.240Z"
   },
   "cloudflare": {
     "worker": "codex-reset-raid",
@@ -108,7 +108,7 @@
     "preview_urls_enabled": false,
     "workers_plan": "unavailable: deployment token lacks account subscription read permission",
     "plan_changed": false,
-    "version_id": "08a03eae-016a-4db4-8de7-8311628b53b2"
+    "version_id": "ef085a7c-0111-4835-980e-1cc6d039150a"
   },
   "limits_of_verification": "Authorized production tests added exactly 60 hits and 3 fans. Production batching, idempotency, fan uniqueness, atomic concurrency and rejected banked/prediction/stale inputs passed. Full Reset transition was verified locally; no production reset event was fabricated.",
   "temporary_qa_resources_removed": true,
@@ -127,5 +127,27 @@
     "tool_cards": 4,
     "backup_created": true,
     "published_source_match": true
+  },
+  "sharing": {
+    "poster_size": "1080x1440",
+    "browser_only": true,
+    "confirmed_round_counts": true,
+    "QR_destination": "https://reset.wowtools.ai/",
+    "local_six_viewports": true,
+    "local_QR_decode": true,
+    "download_copy_file_share_mock_retry_cancel_and_close_race": "passed",
+    "native_share_actual_device": "not verified; capability-detected with save/long-press fallback",
+    "webkit": "local cached engine did not respond; not verified",
+    "additional_production_test_writes": 0,
+    "workers_plan_changed": false,
+    "production_verified": true,
+    "live_six_viewports": true,
+    "live_QR_decode_widths": [
+      1080,
+      540,
+      360
+    ],
+    "live_assets_match_source": true,
+    "live_zero_game_writes": true
   }
 }
