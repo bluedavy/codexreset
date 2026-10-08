@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "codex-reset-raid",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-22",
+  "assets": {"directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"]},
+  "durable_objects": {"bindings": [{"name": "RAID", "class_name": "ResetRaidDO"}]},
+  "migrations": [{"tag": "v1", "new_sqlite_classes": ["ResetRaidDO"]}],
+  "triggers": {"crons": ["*/5 * * * *"]},
+  "routes": [{"pattern": "reset.wowtools.ai", "custom_domain": true}],
+  "vars": {"HP_DECAY_K": "5000"},
+  "observability": {"enabled": true, "logs": {"invocation_logs": false}}
+}

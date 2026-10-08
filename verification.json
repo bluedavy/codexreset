@@ -1,0 +1,49 @@
+{
+  "status": "implemented_and_locally_verified_awaiting_deployment_authorization",
+  "tests": {
+    "hp": 2,
+    "worker_durable_object": 8,
+    "passed": true
+  },
+  "typecheck": "passed",
+  "wrangler_deploy_dry_run": "passed",
+  "page_gzip_bytes": 6831,
+  "viewports": [
+    "320x568",
+    "375x667",
+    "390x844",
+    "430x932",
+    "1440x900",
+    "1920x1080"
+  ],
+  "browser_verified": [
+    "no_horizontal_or_vertical_overflow",
+    "boss_card_no_overlap",
+    "immediate_45_taps",
+    "one_fan",
+    "batched_submission",
+    "same_batch_retry",
+    "round_change_transition",
+    "old_pending_discarded",
+    "keyboard_enter",
+    "reduced_motion",
+    "low_health_expression"
+  ],
+  "local_real_feed_round": {
+    "roundId": "2107676072871600470",
+    "fans": 0,
+    "hits": 0,
+    "hp": "100%",
+    "lastResetAt": "2026-10-07T03:35:09.000Z"
+  },
+  "production_verified": false,
+  "deployment_blocker": "Automatic approval review rejected reuse of Cloudflare deployment credentials from Along VPS. Explicit user authorization requested.",
+  "unverified": [
+    "Cloudflare_account_plan",
+    "production_custom_domain_https",
+    "production_SQLite_persistence",
+    "production_Cron_execution",
+    "existing_services_production_smoke"
+  ],
+  "other_services_modified": false
+}
