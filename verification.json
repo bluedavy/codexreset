@@ -7,7 +7,7 @@
   },
   "typecheck": "passed",
   "wrangler_deploy_dry_run": "passed",
-  "page_gzip_bytes": 6831,
+  "page_gzip_bytes": 6881,
   "viewports": [
     "320x568",
     "375x667",
@@ -85,7 +85,9 @@
       "banked_prediction_stale_rejected",
       "production_browser_tapping"
     ],
-    "sqlite_persistence_across_redeployment": true
+    "sqlite_persistence_across_redeployment": true,
+    "credit_link_six_viewports": true,
+    "wowtools_reset_entry": true
   },
   "production_round": {
     "roundId": "2107676072871600470",
@@ -94,7 +96,7 @@
     "lastResetAt": "2026-10-07T03:35:09.000Z",
     "sourceUrl": "https://x.com/thsottiaux/status/2107676072871600470",
     "hpDecayK": 5000,
-    "updatedAt": "2026-10-08T00:31:13.009Z"
+    "updatedAt": "2026-10-08T00:38:11.494Z"
   },
   "cloudflare": {
     "worker": "codex-reset-raid",
@@ -106,8 +108,24 @@
     "preview_urls_enabled": false,
     "workers_plan": "unavailable: deployment token lacks account subscription read permission",
     "plan_changed": false,
-    "version_id": "28205790-57f0-47bb-ba37-3e1c64652c23"
+    "version_id": "08a03eae-016a-4db4-8de7-8311628b53b2"
   },
   "limits_of_verification": "Authorized production tests added exactly 60 hits and 3 fans. Production batching, idempotency, fan uniqueness, atomic concurrency and rejected banked/prediction/stale inputs passed. Full Reset transition was verified locally; no production reset event was fabricated.",
-  "temporary_qa_resources_removed": true
+  "temporary_qa_resources_removed": true,
+  "github": {
+    "repository": "https://github.com/bluedavy/codexreset",
+    "visibility": "public",
+    "default_branch": "main",
+    "license": "MIT",
+    "issues_enabled": true,
+    "source_pushed": true
+  },
+  "site_credit": "Built by Codex \u00b7 Fork on GitHub",
+  "wowtools_portal": {
+    "url": "https://wowtools.ai/",
+    "reset_link": "https://reset.wowtools.ai",
+    "tool_cards": 4,
+    "backup_created": true,
+    "published_source_match": true
+  }
 }
