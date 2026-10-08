@@ -1,5 +1,5 @@
 {
-  "status": "implemented_and_locally_verified_awaiting_deployment_authorization",
+  "status": "deployed_and_verified",
   "tests": {
     "hp": 2,
     "worker_durable_object": 8,
@@ -36,14 +36,78 @@
     "hp": "100%",
     "lastResetAt": "2026-10-07T03:35:09.000Z"
   },
-  "production_verified": false,
-  "deployment_blocker": "Automatic approval review rejected reuse of Cloudflare deployment credentials from Along VPS. Explicit user authorization requested.",
+  "production_verified": true,
+  "deployment_blocker": null,
   "unverified": [
-    "Cloudflare_account_plan",
-    "production_custom_domain_https",
-    "production_SQLite_persistence",
-    "production_Cron_execution",
-    "existing_services_production_smoke"
+    "production_full_reset_event_transition",
+    "actual_scheduled_Cron_invocation",
+    "Workers_account_plan"
   ],
-  "other_services_modified": false
+  "other_services_modified": false,
+  "site": "https://reset.wowtools.ai",
+  "production_checks": {
+    "https": true,
+    "static_assets_match_source_sha256": true,
+    "six_viewports": true,
+    "real_DO_round_initialized": true,
+    "production_test_writes": 60,
+    "existing_sites_http_200": [
+      {
+        "url": "https://wowtools.ai",
+        "status": 200
+      },
+      {
+        "url": "https://along.wowtools.ai",
+        "status": 200
+      },
+      {
+        "url": "https://s.wowtools.ai",
+        "status": 200
+      },
+      {
+        "url": "https://r.wowtools.ai",
+        "status": 200
+      }
+    ],
+    "along_worker_and_domain_unchanged": true,
+    "production_test_fans": 3,
+    "authorized_live_counter_tests": [
+      "https",
+      "static_assets",
+      "live_DO_hits",
+      "idempotency",
+      "unique_fan",
+      "atomic_concurrency",
+      "batch_limit",
+      "same_origin",
+      "old_round_409",
+      "duplicate_verified_reset_noop",
+      "banked_prediction_stale_rejected",
+      "production_browser_tapping"
+    ],
+    "sqlite_persistence_across_redeployment": true
+  },
+  "production_round": {
+    "roundId": "2107676072871600470",
+    "fans": 3,
+    "hits": 60,
+    "lastResetAt": "2026-10-07T03:35:09.000Z",
+    "sourceUrl": "https://x.com/thsottiaux/status/2107676072871600470",
+    "hpDecayK": 5000,
+    "updatedAt": "2026-10-08T00:31:13.009Z"
+  },
+  "cloudflare": {
+    "worker": "codex-reset-raid",
+    "durable_object": "ResetRaidDO / global",
+    "sqlite_migration": "v1",
+    "cron": "*/5 * * * *",
+    "domain": "reset.wowtools.ai",
+    "workers_dev_enabled": false,
+    "preview_urls_enabled": false,
+    "workers_plan": "unavailable: deployment token lacks account subscription read permission",
+    "plan_changed": false,
+    "version_id": "28205790-57f0-47bb-ba37-3e1c64652c23"
+  },
+  "limits_of_verification": "Authorized production tests added exactly 60 hits and 3 fans. Production batching, idempotency, fan uniqueness, atomic concurrency and rejected banked/prediction/stale inputs passed. Full Reset transition was verified locally; no production reset event was fabricated.",
+  "temporary_qa_resources_removed": true
 }

@@ -69,3 +69,13 @@ Use `npx wrangler deployments list` and `npx wrangler rollback VERSION_ID` to re
 
 This is an unofficial fan site and is not affiliated with OpenAI.
 Reset timing is inferred from public community aggregation of public announcements and is not an official OpenAI status feed.
+
+## Live deployment — 2026-10-08
+
+Live: https://reset.wowtools.ai . Worker `codex-reset-raid`; SQLite `ResetRaidDO / global`; Cron `*/5 * * * *`. Public workers.dev and preview URLs are disabled. The Cloudflare account required its first workers.dev namespace to be initialized before Static Assets upload; namespace `wowtools-reset-raid` is not an additional public entry point for this site. No other Worker or existing custom domain was changed.
+
+The initial round was the latest fresh eligible public event `2107676072871600470`, announced 2026-10-07T03:35:09Z, with zero fans and hits. Production HTTPS, current DO state, six viewports and exact asset/source SHA-256 match were verified. Existing wowtools.ai, along.wowtools.ai, s.wowtools.ai and r.wowtools.ai all returned 200. Original Along Worker metadata and custom-domain mapping matched the pre-deployment snapshot.
+
+Ten local tests passed, including real SQLite DO atomic counting and batch idempotency, conservative feed selection and Cron fetch behavior. After explicit user authorization, production write tests contributed exactly 60 real hits and 3 anonymous fans. Live checks passed: duplicate batch does not count twice, repeat visitor does not add another fan, concurrent +10/+10 sums correctly, rapid taps submit in batches, invalid/over-limit/cross-origin/old-round requests are rejected, duplicate verified reset is a no-op, and banked/prediction/stale reset inputs are rejected. No production reset was fabricated or triggered; Full Reset animation and round transition passed local tests. The temporary QA Worker was removed. Redeployment preserved the production round, its 60 hits and 3 fans, confirming SQLite persistence across deployment. The Cron schedule is registered; its actual timed invocation has not yet been observed.
+
+The deployment token cannot read account subscriptions (403), so the Workers plan is unconfirmed; no purchase or upgrade was made. `verification.json` records the scope and remaining limitations.
