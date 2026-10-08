@@ -7,7 +7,7 @@
   },
   "typecheck": "passed",
   "wrangler_deploy_dry_run": "passed",
-  "page_gzip_bytes": 7862,
+  "page_gzip_bytes": 7714,
   "viewports": [
     "320x568",
     "375x667",
@@ -108,7 +108,7 @@
     "preview_urls_enabled": false,
     "workers_plan": "unavailable: deployment token lacks account subscription read permission",
     "plan_changed": false,
-    "version_id": "ef085a7c-0111-4835-980e-1cc6d039150a"
+    "version_id": "5ee2f75b-e41d-404a-89d5-00276151ef64"
   },
   "limits_of_verification": "Authorized production tests added exactly 60 hits and 3 fans. Production batching, idempotency, fan uniqueness, atomic concurrency and rejected banked/prediction/stale inputs passed. Full Reset transition was verified locally; no production reset event was fabricated.",
   "temporary_qa_resources_removed": true,
@@ -148,6 +148,8 @@
       360
     ],
     "live_assets_match_source": true,
-    "live_zero_game_writes": true
+    "live_zero_game_writes": true,
+    "language": "English",
+    "poster_timestamp_zone": "UTC"
   }
 }

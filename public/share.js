@@ -70,20 +70,20 @@
     box(38,38,1004,1364,40,'#fffdf4');
     ctx.strokeStyle='#d9e4ed';ctx.lineWidth=3;ctx.stroke();
     text('THE UNOFFICIAL CODEX RESET RAID',540,118,25,blue,800);
-    text('一起打怪，等一次 Reset',540,218,64,blue,900);
+    text('JOIN THE RESET RAID',540,218,64,blue,900);
     text('Tibo, one more reset please.',540,286,36,ink,800);
     box(106,328,868,480,32,'#f3eddb');
     text('THE QUOTA BEAST',540,379,27,ink,900);
     await drawBeast(ctx, snapshot);
     box(134,805,812,94,24,'#e9f0f8');
     text(`${snapshot.fans.toLocaleString('en-US')} fans  ·  ${snapshot.hits.toLocaleString('en-US')} hits`,540,866,38,blue,800,750);
-    text('你的一击，也算数。召集队友一起敲！',540,952,31,ink,700);
+    text('Every hit counts. Bring your crew.',540,952,31,ink,700);
     const qr = await loadImage('/invite-qr.svg');
     ctx.imageSmoothingEnabled=false;ctx.drawImage(qr,392,984,296,296);
-    text('扫码加入 · SCAN TO JOIN',540,1313,24,blue,800);
+    text('SCAN TO JOIN',540,1313,24,blue,800);
     text('reset.wowtools.ai',540,1357,27,ink,800);
-    const stamp = new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
-    text(`本轮战况 · ${stamp} 北京时间  /  Built by Codex`,540,1384,17,'#687484',500);
+    const stamp = new Intl.DateTimeFormat('en-GB',{timeZone:'UTC',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+    text(`Round snapshot · ${stamp} UTC  /  Built by Codex`,540,1384,17,'#687484',500);
     return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(new Error('PNG export failed')),'image/png'));
   }
 
@@ -97,8 +97,8 @@
         preview.hidden=save.hidden=share.hidden=retry.hidden=true;
         file=null;
         if(posterUrl){URL.revokeObjectURL(posterUrl);posterUrl=null;}
-        if(!snapshot){note.textContent='战况正在同步，请稍后重新生成；也可以先复制邀请链接。';retry.hidden=false;return;}
-        busy(true);note.textContent='正在生成海报…';
+        if(!snapshot){note.textContent='Syncing round stats. Try again shortly, or copy the invitation link.';retry.hidden=false;return;}
+        busy(true);note.textContent='Generating your poster…';
         try {
           const blob=await makePoster(snapshot);
           if(id!==generation||!dialog.open) return;
@@ -106,10 +106,10 @@
           posterUrl=URL.createObjectURL(blob);preview.src=posterUrl;save.href=posterUrl;
           preview.hidden=save.hidden=false;
           try {share.hidden=!(navigator.share&&navigator.canShare?.({files:[file]}));} catch {share.hidden=true;}
-          note.textContent='保存或长按图片，再发给朋友。海报展示生成时已确认的本轮战况。';
+          note.textContent='Save or press and hold the image to send it to friends. Stats reflect the confirmed round at creation time.';
         } catch {
           if(id!==generation||!dialog.open) return;
-          note.textContent='海报生成失败，请重试；也可以先复制邀请链接。';retry.hidden=false;
+          note.textContent='Could not generate the poster. Try again, or copy the invitation link.';retry.hidden=false;
         } finally {if(id===generation)busy(false);}
       }
       $('invite').addEventListener('click',()=>{dialog.showModal();generate();});
@@ -120,13 +120,13 @@
       share.addEventListener('click',async()=>{
         if(!file)return;
         share.disabled=true;
-        try {await navigator.share({files:[file],title:'一起打怪，等一次 Reset',text:'你的一击，也算数。扫码加入 Codex Reset Raid！'});}
-        catch(error){if(error.name!=='AbortError')note.textContent='系统分享暂不可用，请保存或长按图片发送。';}
+        try {await navigator.share({files:[file],title:'JOIN THE RESET RAID',text:'Every hit counts. Scan to join the Codex Reset Raid!'});}
+        catch(error){if(error.name!=='AbortError')note.textContent='Sharing is unavailable. Save or press and hold the image to send it.';}
         finally {share.disabled=false;}
       });
       $('share-copy').addEventListener('click',async()=>{
-        try {await navigator.clipboard.writeText(URL_GAME);note.textContent='邀请链接已复制，发给朋友一起打怪！';}
-        catch {note.textContent='复制失败，请复制此链接：'+URL_GAME;}
+        try {await navigator.clipboard.writeText(URL_GAME);note.textContent='Invitation link copied. Bring your friends to the raid!';}
+        catch {note.textContent='Could not copy. Copy this link: '+URL_GAME;}
       });
     }
   };
