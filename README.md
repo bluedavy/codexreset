@@ -1,5 +1,7 @@
 # Codex Reset Raid
 
+Built by Codex. Live at [reset.wowtools.ai](https://reset.wowtools.ai). Source: [bluedavy/codexreset](https://github.com/bluedavy/codexreset).
+
 One shared Quota Beast. Tap the Reset Card to add a hit. Players can hurt it; only a verified public full/global reset announcement ends a round.
 
 ## Architecture
@@ -79,3 +81,7 @@ The initial round was the latest fresh eligible public event `210767607287160047
 Ten local tests passed, including real SQLite DO atomic counting and batch idempotency, conservative feed selection and Cron fetch behavior. After explicit user authorization, production write tests contributed exactly 60 real hits and 3 anonymous fans. Live checks passed: duplicate batch does not count twice, repeat visitor does not add another fan, concurrent +10/+10 sums correctly, rapid taps submit in batches, invalid/over-limit/cross-origin/old-round requests are rejected, duplicate verified reset is a no-op, and banked/prediction/stale reset inputs are rejected. No production reset was fabricated or triggered; Full Reset animation and round transition passed local tests. The temporary QA Worker was removed. Redeployment preserved the production round, its 60 hits and 3 fans, confirming SQLite persistence across deployment. The Cron schedule is registered; its actual timed invocation has not yet been observed.
 
 The deployment token cannot read account subscriptions (403), so the Workers plan is unconfirmed; no purchase or upgrade was made. `verification.json` records the scope and remaining limitations.
+
+## Make it more fun
+
+This project is open source under the MIT license. Fork [codexreset](https://github.com/bluedavy/codexreset), suggest an idea in Issues, or submit a pull request. See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, checks and the game’s core constraints. The live site is maintained separately; opening a pull request does not deploy to production.
